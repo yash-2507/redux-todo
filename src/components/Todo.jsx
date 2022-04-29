@@ -1,24 +1,22 @@
-import React from "react";
+import { deleteTodo } from "../features/todo/todoSlice";
+import { useDispatch } from "react-redux";
 
 export default function Todo({ id, title }) {
-    const handleDelete = async () => {
-        let res = await fetch(`http://localhost:8080/todo/${id}`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-        });
-    };
+    const dispatch = useDispatch();
     return (
-        <div
-            style={{
-                display: "flex",
-                width: "100vw",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 25,
-            }}
-        >
-            <h2>{title}</h2>
-            <button onClick={handleDelete}>Delete</button>
+        <div>
+            <h2>
+                {title}
+                <span>
+                    <button
+                        onClick={() => {
+                            dispatch(deleteTodo(id));
+                        }}
+                    >
+                        Delete
+                    </button>
+                </span>
+            </h2>
         </div>
     );
 }

@@ -1,26 +1,17 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Todo from "./Todo";
 import TodoInput from "./TodoInput";
 
 export default function TodoList() {
-    const todos = useSelector((state) => state.todos);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getTodo(result));
-    }, []);
-
+    const { todoArr } = useSelector((store) => store.todo);
+    // console.log("todoArr: ", todoArr);
     return (
         <div>
             <h2>Todo List</h2>
             <TodoInput />
-            <div>
-                {todos &&
-                    todos.map((elem, i) => {
-                        return <Todo key={i} {...elem} />;
-                    })}
-            </div>
+            {todoArr.map((todo) => {
+                return <Todo key={todo.id} {...todo} />;
+            })}
         </div>
     );
 }
