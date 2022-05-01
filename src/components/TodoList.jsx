@@ -9,8 +9,8 @@ export default function TodoList() {
         <div>
             <h2>Todo List</h2>
             <TodoInput />
-            {todoArr.map((todo) => {
-                return <Todo key={todo.id} {...todo} />;
+            {todoArr.map((todo, index) => {
+                return <Todo key={index} {...todo} />;
             })}
         </div>
     );

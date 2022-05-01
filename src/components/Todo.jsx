@@ -1,7 +1,7 @@
 import { deleteTodo } from "../features/todo/todoSlice";
 import { useDispatch } from "react-redux";
 
-export default function Todo({ id, title }) {
+export default function Todo({ title }) {
     const dispatch = useDispatch();
     return (
         <div>
@@ -10,7 +10,7 @@ export default function Todo({ id, title }) {
                 <span>
                     <button
                         onClick={() => {
-                            dispatch(deleteTodo(id));
+                            dispatch(deleteTodo(title));
                         }}
                     >
                         Delete
